@@ -1,0 +1,27 @@
+---
+title: "my_penguins"
+author: "Benjamin Smull, bss2869"
+format: html
+editor: visual
+---
+
+## Libraries
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+
+```
+
+Summary
+
+```{r}
+bill_penguins <- penguins |>
+  group_by(species) |>
+  summarise(
+    mean_bill_length = mean(bill_length_mm, na.rm = TRUE)
+  )
+
+ggplot(data = bill_penguins, mapping = aes(x = species, y = mean_bill_length)) +
+  geom_col(fill = "red")
+```
